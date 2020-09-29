@@ -11,6 +11,9 @@ const port = process.env.PORT || 3000;
 //tell app to use EJS for templates
 app.set('view engine', 'ejs');
 
+//Make styles public
+app.use(express.static("public"));
+
 //tell app to use Body parser
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -24,8 +27,8 @@ var completed = ["Vocab words"];
 app.get('/', function(req, res){
     //return something to homepage
     //res.send('Hello World');
-    res.render('index', {task: tasks});
-})
+    res.render('index', {tasks: tasks});
+});
 
 //add post method /addtask
 app.post('/addtask', function(req, res){

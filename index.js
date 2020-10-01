@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //MongoDB Connection Info
 const Todo = require('./models/todo.model');
 const mongoDB = 'mongodb+srv://testConnection:b8RwqJYgo4hD1xhe@nodetodoexample-iqnde.mongodb.net/test?retryWrites=true&w=majority';
+//TO DO: Change database to mine
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 let db = mongoose.connection;
@@ -56,7 +57,7 @@ app.post('/addtask', function (req, res) {
     //return index
     res.redirect('/');
 });
-
+//TO DO: Update removetask for the mongoDB
 app.post('/removetask', function (req, res) {
     var removeTask = req.body.check;
     //To Do: push to completed

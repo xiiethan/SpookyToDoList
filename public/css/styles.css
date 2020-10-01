@@ -42,6 +42,10 @@ h2{
     font-weight: bold;
 } 
 
+input{
+    color: black;
+}
+
 input[type=checkbox]:checked + label{
     cursor: pointer;
 }

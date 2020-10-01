@@ -2,31 +2,50 @@
 var express = require('express');
 //reqiure body parser
 var bodyParser = require('body-parser');
+//Require mongoose
+var mongoose = require('mongoose');
 //create express object, call express
 var app = express();
-
 //get port info
 const port = process.env.PORT || 3000;
-
 //tell app to use EJS for templates
 app.set('view engine', 'ejs');
-
 //Make styles public
 app.use(express.static("public"));
-
 //tell app to use Body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//Couple of items items
-var tasks = ["Attend Class", "Do Homework"];
+//MongoDB Connection Info
+const Todo = require('./models/todo.model');
+const mongoDB = 'mongodb+srv://testConnection:b8RwqJYgo4hD1xhe@nodetodoexample-iqnde.mongodb.net/test?retryWrites=true&w=majority';
+mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
+//Couple of items items
+var tasks = [];
 //completed items 
-var completed = ["Vocab words"];
+var completed = [];
 
 //get home page
 app.get('/', function (req, res) {
+    //Query to mongoDB
+    Todo.find(function(err, todo){
+        if(err){
+            console.log(err);
+        }else{
+            console.log(todo);
+            for(i=0; i < todo.length; i++){
+                if(todo[i].done = true){
+                    completed.push(todo[i].item);
+                }else{
+                    tasks.push(todo[i].item);
+                }
+            }
+        }
+    });
     //return something to homepage
-    //res.send('Hello World');
     res.render('index', { tasks: tasks, completed: completed });
 });
 

@@ -41,3 +41,12 @@ h2{
     font-size: 30px;
     font-weight: bold;
 } 
+
+input[type=checkbox]:checked + label{
+    cursor: pointer;
+}
+
+input[type=checkbox]:checked + label:before{
+    background-color:  #D47527;
+    color: #fff;
+}

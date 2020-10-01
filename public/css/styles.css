@@ -1,10 +1,18 @@
-* {
-  font-family: "lato", sans-serif;
+*{
+  font-family: "Creepster", sans-serif;
   font-weight: bold;
+  color: black;
+}
+
+button{
+    background: transparent;
+    color: white;
 }
 
 body {
-  background: rgb(245, 245, 245);
+  background-image:url('flying-ghosts.gif');
+  background-repeat: repeat-x;
+  background-size: cover;
   color: #333333;
   margin-top: 20px;
 }
@@ -20,6 +28,12 @@ ul {
   padding: 0;
 }
 
+h1{
+    font-size: 50px;
+    color: white;
+}
+
 h2{
-    color: rgb(129, 202, 224);;
+    color: rgb(212, 117, 39);
+    font-size: 30px;
 } 

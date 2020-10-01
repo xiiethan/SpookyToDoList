@@ -1,20 +1,20 @@
 <html>
     <head>
         <title> To-do List</title>
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet">
     </head>
     <body>
     <div class="container">
-        <h2> We have a to-do list </h2>
+        <h1> Spooky to-do list </h1>
         <form action ="/addtask" method="POST">
             <input type="text" name="newtask" placeholder="add new task"> 
-            <button> Add a Task </button>
+            <button> Add </button>
             <h2> Tasks </h2>
             <% for( var i=0; i < tasks.length; i++){ %>
                 <li><input type="checkbox" name="check" value="<%= tasks[i] %>" /><%= tasks[i] %></li>
             <% } %>
-            <button formaction="/removetask" type="submit"> Remove Task </button>
+            <button formaction="/removetask" type="submit"> Kill Task </button>
         </form>
         <h2> Completed tasks </h2>
 

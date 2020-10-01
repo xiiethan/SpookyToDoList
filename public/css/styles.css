@@ -1,7 +1,7 @@
 *{
   font-family: "Creepster", sans-serif;
-  font-weight: bold;
-  color: black;
+  font-weight: normal;
+  color: white;
 }
 
 button{
@@ -10,8 +10,9 @@ button{
 }
 
 body {
-  background-image:url('flying-ghosts.gif');
-  background-repeat: repeat-x;
+  background-image:url('halloween.png');
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   color: #333333;
   margin-top: 20px;
@@ -21,6 +22,7 @@ body {
   display: block;
   width: 400px;
   margin: 0 auto;
+  margin-top: 150px;
 }
 
 ul {
@@ -31,9 +33,11 @@ ul {
 h1{
     font-size: 50px;
     color: white;
+    font-weight: bold;
 }
 
 h2{
     color: rgb(212, 117, 39);
     font-size: 30px;
+    font-weight: bold;
 } 

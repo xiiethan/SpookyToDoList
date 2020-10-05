@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //MongoDB Connection Info
 const Todo = require('./models/todo.model');
-const mongoDB = 'mongodb+srv://testConnection:b8RwqJYgo4hD1xhe@nodetodoexample-iqnde.mongodb.net/test?retryWrites=true&w=majority';
+const mongoDB = 'mongodb+srv://xiiethan:fLvdhzo1K55gAUAv@cluster0.mumvp.mongodb.net/todolist?retryWrites=true&w=majority';
 //TO DO: Change database to mine
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
@@ -38,7 +38,7 @@ app.get('/', function (req, res) {
         }else{
             console.log(todo);
             for(i=0; i < todo.length; i++){
-                if(todo[i].done = true){
+                if(todo[i].done == true){
                     completed.push(todo[i].item);
                 }else{
                     tasks.push(todo[i].item);

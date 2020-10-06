@@ -32,6 +32,9 @@ var completed = [];
 //get home page
 app.get('/', function (req, res) {
     //Query to mongoDB
+    //Reset the lists to avoid duplicates upon refresh
+    tasks = [];
+    completed = [];
     Todo.find(function(err, todo){
         if(err){
             console.log(err);

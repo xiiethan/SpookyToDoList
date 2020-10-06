@@ -16,10 +16,13 @@
             <% } %>
             <button formaction="/removetask" type="submit"> Kill Task </button>
         </form>
-        <h2> Completed tasks </h2>
-        <% for( var i=0; i < completed.length; i++){ %>
-            <li><%= completed[i] %></li>
-        <% } %>
-        </div>
+        <form action ="/deleteTodo" method="POST">
+            <h2> Completed tasks </h2>
+            <% for(var i = 0; i < completed.length; i++){ %>
+                <li><input type="checkbox" name="delete" value="<%= completed[i] %>" /><%= completed[i] %></li>
+            <% } %>
+            <button formaction="/deleteTodo" type="submit"> Delete </button>
+        </form>
+    </div>
     </body>
 </html>

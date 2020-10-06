@@ -32,13 +32,13 @@ var completed = [];
 //get home page
 app.get('/', function (req, res) {
     //Query to mongoDB
-    //Reset the lists to avoid duplicates upon refresh
-    tasks = [];
-    completed = [];
     Todo.find(function(err, todo){
         if(err){
             console.log(err);
         }else{
+            //Reset the lists to avoid duplicates upon refresh
+            tasks = [];
+            completed = [];
             console.log(todo);
             for(i=0; i < todo.length; i++){
                 if(todo[i].done == true){
@@ -55,6 +55,18 @@ app.get('/', function (req, res) {
 
 //add post method /addtask
 app.post('/addtask', function (req, res) {
+     let newTodo = new Todo({
+        item: req.body.newtask,
+        done: false
+    })
+    newTodo.save(function(err, todo){
+        if (err){
+            console.log(err)
+        } else {
+            //return index
+            res.redirect('/');
+        }
+    });
     var newTask = req.body.newtask;
     tasks.push(newTask);
     //return index
@@ -65,15 +77,25 @@ app.post('/removetask', function (req, res) {
     var removeTask = req.body.check;
     //To Do: push to completed
     if (typeof removeTask === 'string') {
-        tasks.splice(tasks.indexOf(removeTask), 1);
-        completed.push(removeTask);
+        Todo.updateOne({_id: id},{done: true}, function(err){
+            if(err){
+                console.log(err);
+            }
+        });
     } else if (typeof removeTask === 'object') {
-        for (var i = 0; i < removeTask.length; i++) {
-            tasks.splice(tasks.indexOf(removeTask[i]), 1);
-            completed.push(removeTask[i]);
-        }
+        Todo.updateOne({_id: id[i]},{done: true}, function(err){
+            if(err){
+                console.log(err);
+            }
+        });
     }
     res.redirect('/');
+});
+
+app.post('/deleteTodo', function(){
+    //Write function for delete using id
+    //handle for single and multiple delete requests (req.body.delete)
+    //Todo.deleteOne(id, function(err){}) using the id
 });
 
 //server setup

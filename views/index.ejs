@@ -19,7 +19,7 @@
         <form action ="/deleteTodo" method="POST">
             <h2> Completed tasks </h2>
             <% for(var i = 0; i < completed.length; i++){ %>
-                <li><input type="checkbox" name="delete" value="<%= completed[i] %>" /><%= completed[i] %></li>
+                <li><input type="checkbox" name="delete" value="<%= completed[i]._id %>" /><%= completed[i].item %></li>
             <% } %>
             <button formaction="/deleteTodo" type="submit"> Delete </button>
         </form>

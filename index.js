@@ -4,6 +4,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 //Require mongoose
 var mongoose = require('mongoose');
+//Require node fetch
+var fetch = require('node-fetch');
 //create express object, call express
 var app = express();
 //get port info
@@ -41,7 +43,7 @@ app.get('/', function (req, res) {
             completed = [];
             for(i=0; i < todo.length; i++){
                 if(todo[i].done){
-                    completed.push(todo[i].item);
+                    completed.push(todo[i]);
                 }else{
                     tasks.push(todo[i]);
                 }
@@ -88,7 +90,6 @@ app.post('/removetask', function (req, res) {
 });
 
 app.post('/deleteTodo', function(req, res){
-    //Write function for delete using id
     var id = req.body.delete;
     if (typeof id === 'string') {
         Todo.deleteOne({_id: id}, function(err){
@@ -106,8 +107,16 @@ app.post('/deleteTodo', function(req, res){
         }
     }
     res.redirect('/');
-    //handle for single and multiple delete requests (req.body.delete)
-    //Todo.deleteOne(id, function(err){}) using the id
+});
+
+app.get('/nasa', function(req, res){
+    let nasaData;
+    fetch('https://api.nasa.gov/planetary/apod?api_key=lanB7165TxYteQCbOXNFauIGHijkqnffyLe4CUmD')
+    .then(res => res.json())
+    .then(data => {
+        nasaData = data;
+        res.json(nasaData);
+    });
 });
 
 //server setup

@@ -10,3 +10,6 @@ TO RUN:
   "node index.js"
   
 Enjoy the spooky season to-do list! 
+
+
+A simple halloween themed To-Do List using AJAX and MongoDB to add/remove/delete tasks from the lists

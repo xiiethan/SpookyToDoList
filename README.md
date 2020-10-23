@@ -1,4 +1,4 @@
-# IntroNodeJs
+# SpookyToDoList
 
 
 TO RUN:
@@ -12,6 +12,6 @@ TO RUN:
 Enjoy the spooky season to-do list! 
 
 
-A simple halloween themed To-Do List using AJAX and MongoDB to add/remove/delete tasks from the lists
+A simple halloween themed To-Do List using AJAX and MongoDB to add/remove/delete tasks from the database
 
 Hosted on Heroku - https://spooky-to-do-list.herokuapp.com/
